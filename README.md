@@ -20,7 +20,7 @@ Simple: **I hate simon.**
 
 When I was a kid I never had simon. I played with at my friends homes and I always remember how frustrating was to lose one time after another. It was upsetting!!
 
-After finishing Parachute I saw an old simon ad. And I thought... why not? this could be another great zx80 assembler/spectrum/attribute game. So I start gathering information.
+After finishing Parachute I saw an old simon ad. And I thought... why not? this could be another great z80 assembler / spectrum / attribute game. So I start gathering information.
 
 I was amazed by the grat work done by Simon Inns at https://www.waitingforfriday.com/?p=586  wow!!! And then I start loving the game.  Two weekends later ZXSimon was born.
 
