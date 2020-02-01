@@ -14,9 +14,9 @@ by Carles Oriol - Barcelona 2020
 carlesoriol@gmail.com
 
 
-##Why Simon?
+## Why Simon?
 
-Simple: I hate simon.
+Simple: ** I hate simon. **
 
 When I was a kid I never had simon. I played with at my friends homes and I always remember how frustrating was to lose one time after another. It was upsetting!!
 
