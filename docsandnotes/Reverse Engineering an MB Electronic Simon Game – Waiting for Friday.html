@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://www.waitingforfriday.com/?p=586 -->
+<html lang="en-GB" data-lt-installed="true"><link type="text/css" id="dark-mode" rel="stylesheet" href="https://www.waitingforfriday.com/?p=586"><style type="text/css" id="dark-mode-custom-style"></style><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="profile" href="http://gmpg.org/xfn/11">
+        <link rel="pingback" href="https://www.waitingforfriday.com/xmlrpc.php">       
+        <title>Reverse Engineering an MB Electronic Simon Game – Waiting for Friday</title>
+<link rel="dns-prefetch" href="https://maxcdn.bootstrapcdn.com/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Waiting for Friday » Feed" href="https://www.waitingforfriday.com/?feed=rss2">
+<link rel="alternate" type="application/rss+xml" title="Waiting for Friday » Comments Feed" href="https://www.waitingforfriday.com/?feed=comments-rss2">
+<link rel="alternate" type="application/rss+xml" title="Waiting for Friday » Reverse Engineering an MB Electronic Simon Game Comments Feed" href="https://www.waitingforfriday.com/?feed=rss2&amp;p=586">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.waitingforfriday.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/wp-emoji-release.min.js" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="font-awesome-css" href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/font-awesome.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wplic_style-css" href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-css" href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="adsns_css-css" href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/adsns.css" type="text/css" media="all">
+<link rel="stylesheet" id="toc-screen-css" href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/screen.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-syntax-css-css" href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/wp-syntax.css" type="text/css" media="all">
+<link rel="stylesheet" id="google-font-css" href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="reset-stylesheet-css" href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/reset.css" type="text/css" media="all">
+<link rel="stylesheet" id="resopnsive-stylesheet-css" href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/960_24_col_responsive.css" type="text/css" media="all">
+<link rel="stylesheet" id="stylesheet-css" href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/style(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="tablepress-default-css" href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/default.min.css" type="text/css" media="all">
+<script type="text/javascript" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/jquery.js"></script>
+<script type="text/javascript" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/superfish.js"></script>
+<script type="text/javascript" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/custom.js"></script>
+<link rel="https://api.w.org/" href="https://www.waitingforfriday.com/index.php?rest_route=/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.waitingforfriday.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.waitingforfriday.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Restoring an Acorn A3000 computer" href="https://www.waitingforfriday.com/?p=701">
+<link rel="next" title="Simon18F" href="https://www.waitingforfriday.com/?p=576">
+<link rel="canonical" href="https://www.waitingforfriday.com/?p=586">
+<link rel="shortlink" href="https://www.waitingforfriday.com/?p=586">
+<link rel="alternate" type="application/json+oembed" href="https://www.waitingforfriday.com/index.php?rest_route=%2Foembed%2F1.0%2Fembed&amp;url=https%3A%2F%2Fwww.waitingforfriday.com%2F%3Fp%3D586">
+<link rel="alternate" type="text/xml+oembed" href="https://www.waitingforfriday.com/index.php?rest_route=%2Foembed%2F1.0%2Fembed&amp;url=https%3A%2F%2Fwww.waitingforfriday.com%2F%3Fp%3D586&amp;format=xml">
+<style>#wpdevart_lb_overlay{background-color:#000000;} #wpdevart_lb_overlay.wpdevart_opacity{opacity:0.28 !important;} #wpdevart_lb_main_desc{
+				 -webkit-transition: opacity 0.3s ease;
+				 -moz-transition: opacity 0.3s ease;
+				 -o-transition: opacity 0.3s ease;
+				 transition: opacity 0.3s ease;} #wpdevart_lb_information_content{
+				 -webkit-transition: opacity 0.3s ease;
+				 -moz-transition: opacity 0.3s ease;
+				 -o-transition: opacity 0.3s ease;
+				 transition: opacity 0.3s ease;}
+		#wpdevart_lb_information_content{
+			width:100%;	
+		}
+		#wpdevart_info_counter_of_imgs{
+			    display: inline-block;
+				padding-left:15px;
+				padding-right:4px;
+				font-size:20px;
+				color:#000000;
+		}
+		#wpdevart_info_caption{
+			    display: inline-block;
+				padding-left:15px;
+				padding-right:4px;
+				font-size:20px;
+				color:#000000;
+		}
+		#wpdevart_info_title{
+			    display: inline-block;
+				padding-left:5px;
+				padding-right:5px;
+				font-size:15px;
+				color:#000000;
+		}
+		@-webkit-keyframes rotate {
+			to   {-webkit-transform: rotate(360deg);}
+			from  {-webkit-transform: rotate(0deg);}
+		}
+		@keyframes rotate {
+			to   {transform: rotate(360deg);}
+			from  {transform: rotate(0deg);}
+		}
+		#wpdevart_lb_loading_img,#wpdevart_lb_loading_img_first{
+			-webkit-animation: rotate 2s linear  infinite;
+    		animation: rotate 2s linear infinite;
+		}
+	  </style>      <!-- Analytics by WP-Statistics v12.6.12 - https://wp-statistics.com/ -->
+<link rel="shortcut icon" href="https://www.waitingforfriday.com/wp-content/uploads/2017/01/WFF.png">
+        
+    </head>
+    <body class="post-template-default single single-post postid-586 single-format-standard">		
+        <div class="main-container">
+            <div class="container_24">
+                <div class="grid_24">
+                    <div class="main-content">					
+                        <div class="header">
+                            <div class="logo"><a href="https://www.waitingforfriday.com/"><img src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/main_page_logo.png" alt="Waiting for Friday"></a> </div>
+                            <!--Start Menu wrapper-->
+                            <!--End Menu wrapper-->
+                        </div>
+                        <div class="clear"></div>
+                        <div class="menu_wrapper">                     
+                            <div id="MainNav">
+                                <a href="https://www.waitingforfriday.com/?p=586#" class="mobile_nav closed">Pages Navigation Menu<span></span><ul id="mobile_menu" class="it_mobile_menu"><li id="menu-item-137" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-137 it_first_menu_item"><a href="https://www.waitingforfriday.com/">Home</a></li>
+<li id="menu-item-150" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-150"><a href="https://www.waitingforfriday.com/?cat=6">AVR Microcontroller</a></li>
+<li id="menu-item-149" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-149"><a href="https://www.waitingforfriday.com/?cat=5">PIC Microcontroller</a></li>
+<li id="menu-item-151" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-151"><a href="https://www.waitingforfriday.com/?cat=7">Retro Computers</a></li>
+<li id="menu-item-152" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-152"><a href="https://www.waitingforfriday.com/?page_id=144">About</a></li>
+<li id="menu-item-153" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-153"><a href="https://www.waitingforfriday.com/?page_id=142">Links</a></li>
+<li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-206"><a href="https://www.waitingforfriday.com/?page_id=199">Sitemap</a></li>
+<li id="menu-item-244" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-244"><a href="https://www.waitingforfriday.com/wp-login.php">Login/Register</a></li>
+</ul></a>
+                                <div id="menu" class="menu-menu-1-container"><ul id="menu-menu-1" class="sf-menu sf-js-enabled sf-shadow"><li id="menu-item-137" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-137"><a href="https://www.waitingforfriday.com/">Home</a></li>
+<li id="menu-item-150" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-150"><a href="https://www.waitingforfriday.com/?cat=6">AVR Microcontroller</a></li>
+<li id="menu-item-149" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-149"><a href="https://www.waitingforfriday.com/?cat=5">PIC Microcontroller</a></li>
+<li id="menu-item-151" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-151"><a href="https://www.waitingforfriday.com/?cat=7">Retro Computers</a></li>
+<li id="menu-item-152" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-152"><a href="https://www.waitingforfriday.com/?page_id=144">About</a></li>
+<li id="menu-item-153" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-153"><a href="https://www.waitingforfriday.com/?page_id=142">Links</a></li>
+<li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-206"><a href="https://www.waitingforfriday.com/?page_id=199">Sitemap</a></li>
+<li id="menu-item-244" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-244"><a href="https://www.waitingforfriday.com/wp-login.php">Login/Register</a></li>
+</ul></div> 
+                            </div>                                 
+                        </div>
+                        <div class="clear"></div> <div class="clear"></div> 
+<div class="full-content">
+    <div class="grid_24">
+        <div class="grid_17 alpha">
+            <div class="content_bar product_detail">
+                <div class="feature_content">
+                                            <div class="product-info">
+                            <h1 class="page-heading">Reverse Engineering an MB Electronic Simon Game</h1>
+                            <div class="detail">
+                                <ul class="post_meta">
+                                    <li class="admin">Posted by <a href="http://www.waitingforfriday.com/" title="Visit Simon Inns’s website" rel="author external">Simon Inns</a></li>
+                                    <li class="date">Posted on  August 10, 2009</li>
+                                    <li class="category"><a href="https://www.waitingforfriday.com/?cat=9" rel="category">Light</a>, <a href="https://www.waitingforfriday.com/?cat=12" rel="category">Reverse engineering</a>, <a href="https://www.waitingforfriday.com/?cat=8" rel="category">Sound</a></li>
+                                    <li class="commentt"><a href="https://www.waitingforfriday.com/?p=586#comments">2 Comments.</a></li>
+                                </ul>
+                            </div>
+                            <div class="content_item">    
+                                <div class="contentitem">
+                                    <div id="toc_container" class="no_bullets"><p class="toc_title">Contents <span class="toc_toggle">[<a href="https://www.waitingforfriday.com/?p=586#">hide</a>]</span></p><ul class="toc_list"><li><a href="https://www.waitingforfriday.com/?p=586#The_Simon_game"><span class="toc_number toc_depth_1">1</span> The Simon game</a></li><li><a href="https://www.waitingforfriday.com/?p=586#Hardware"><span class="toc_number toc_depth_1">2</span> Hardware</a><ul><li><a href="https://www.waitingforfriday.com/?p=586#Modification_of_the_Pocket_Simon_hardware"><span class="toc_number toc_depth_2">2.1</span> Modification of the Pocket Simon hardware</a></li><li><a href="https://www.waitingforfriday.com/?p=586#MB4850_Microprocessor"><span class="toc_number toc_depth_2">2.2</span> MB4850 Microprocessor</a></li></ul></li><li><a href="https://www.waitingforfriday.com/?p=586#Software"><span class="toc_number toc_depth_1">3</span> Software</a><ul><li><a href="https://www.waitingforfriday.com/?p=586#Switch_multiplexing_by_polling"><span class="toc_number toc_depth_2">3.1</span> Switch multiplexing by polling</a></li><li><a href="https://www.waitingforfriday.com/?p=586#Sound_frequencies_and_timing"><span class="toc_number toc_depth_2">3.2</span> Sound frequencies and timing</a></li><li><a href="https://www.waitingforfriday.com/?p=586#Special_8216Razz8217"><span class="toc_number toc_depth_2">3.3</span> Special ‘Razz’</a></li><li><a href="https://www.waitingforfriday.com/?p=586#Random_number_generation"><span class="toc_number toc_depth_2">3.4</span> Random number generation</a></li><li><a href="https://www.waitingforfriday.com/?p=586#Maximum_sequence_length"><span class="toc_number toc_depth_2">3.5</span> Maximum sequence length</a></li></ul></li><li><a href="https://www.waitingforfriday.com/?p=586#Differences_between_Pocket_Simon_and_Simon"><span class="toc_number toc_depth_1">4</span> Differences between Pocket Simon and Simon</a></li><li><a href="https://www.waitingforfriday.com/?p=586#MB_Simon_PCB_Revision_A"><span class="toc_number toc_depth_1">5</span> MB Simon PCB Revision A</a></li><li><a href="https://www.waitingforfriday.com/?p=586#References"><span class="toc_number toc_depth_1">6</span> References</a></li><li><a href="https://www.waitingforfriday.com/?p=586#See_Also"><span class="toc_number toc_depth_1">7</span> See Also</a></li><li><a href="https://www.waitingforfriday.com/?p=586#Notes"><span class="toc_number toc_depth_1">8</span> Notes</a></li></ul></div>
+<p>The MB Electronics Pocket Simon game has a very simple circuit thanks to the inclusion of a custom MB Electronics processor (the MB4850) which performs nearly all of the functions for the game. The only other significant piece of electronics is a SN75494N chip which interfaces the processor to the light‐bulbs and the built in piezo buzzer.</p>
+<div id="attachment_592" style="width: 1258px" class="wp-caption alignnone"><a href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/MB_Simon.png" rel="wpdevart_lightbox"><img aria-describedby="caption-attachment-592" class="size-full wp-image-592" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/MB_Simon.png" alt="" width="1248" height="903"></a><p id="caption-attachment-592" class="wp-caption-text">MB Simon and Pocket Simon</p></div>
+<p>The aim of this exercise is to reverse‐engineer the Pocket Simon game so that it can be replicated as accurately as possible using modern components (or even reproduced entirely in software). This includes analysing the hardware (how it is built and how it works), the software (including timing, note frequencies, game modes, light sequences, etc.).</p>
+<p>Since the processor of the Pocket Simon is the same as found in the full‐size Simon all information contained in this document are relevant to both (I chose the Pocket Simon since I didn’t want to risk damaging my full‐size game).</p>
+<h1><span id="The_Simon_game">The Simon game</span></h1>
+<p>The Simon game has three game modes:</p>
+<ol>
+<li>Single Player – The game generates a sequence of lights and sounds which the player must follow, the sequence grows by one colour every turn and ends when the player makes a mistake or repeats the maximum number of colours in a sequence (which is dependent on the skill level setting)</li>
+<li>Multi Player (game 2) – The game begins with Simon displaying a colour, the first player must repeat the colour and then select another colour, subsequent players must enter the current sequence and then add one more, the next player then selects the sequence of colours entered so far and then one more and so on until a player makes a mistake (or a sequence of 31 colours is achieved).</li>
+<li>Multi Player (game 3) – This game is identical to game one, however each player owns one or more colours and is responsible for pressing it during the sequence. If a colour is incorrectly selected that colour is removed from the game and the game continues (with a new colour sequence) until only one colour is left (the winner)</li>
+</ol>
+<p>The game also features 4 skill levels:</p>
+<ol>
+<li>Repeat a sequence of 8 colours</li>
+<li>Repeat a sequence of 14 colours</li>
+<li>Repeat a sequence of 20 colours</li>
+<li>Repeat a sequence of 31 colours</li>
+</ol>
+<p>To play games 2 and 3 the skill level selector must be in position 4 or the game will end prematurely (this is due to the ‘skill level’ performing the same function in all game modes; in the multi‐player games the maximum sequence number Simon can handle gives the longest game play).</p>
+<p>The game hardware consists of 4 coloured lens which, when pressed, operate switches on the circuit board. The colours from top‐left going clockwise are red, blue, yellow and green on the Pocket Simon and green, red, blue and yellow on the full‐size version.</p>
+<p>There are 3 push buttons on the game:</p>
+<ul>
+<li>Last – Replays the sequence from the last game (only operates when the game is not in progress)</li>
+<li>Start – Starts a new game (can be pressed at any time)</li>
+<li>Longest – Replays the longest sequence successfully completed since the game was turned on (only operates when the game is not in progress)</li>
+</ul>
+<p>There are 2 sliding switches on the game (on the full‐sized game there is an additional on‐off switch which in the pocket version is replaced by a two‐pole game switch):</p>
+<ul>
+<li>Game – Off, 1, 2 and 3</li>
+<li>Skill – 1, 2, 3 and 4</li>
+</ul>
+<h1><span id="Hardware">Hardware</span></h1>
+<p>The internal hardware of Pocket Simon consists of a single sided circuit board containing 4 components and 2 integrated circuits (all soldered directly to the circuit board):</p>
+<ul>
+<li>R1 – 680K resistor with 5% tolerance (colour code blue, grey, yellow and gold)</li>
+<li>R2 – 22K resistor with 5% tolerance (colour code red, red, orange and gold)</li>
+<li>C1 ‐ .1uF ceramic capacitor (usually marked ‘104’)</li>
+<li>C2 – 47nF capacitor (this is an old‐style capacitor with colour code yellow, violet, brown, silver, silver and can be replaced with an equivalent ceramic capacitor (usually marked ‘471’))</li>
+<li>U1 – MB4850 custom processor chip</li>
+<li>U2 – SN75494N Hex Digit Driver (the datasheet for this chip is available on the web as the National Semiconductor DS75494 Hex Digit Driver datasheet)</li>
+</ul>
+<p>There are also 3 wire‐links, 4 bulbs (2.5‐3V) and a piezo buzzer included.</p>
+<div id="attachment_596" style="width: 970px" class="wp-caption alignnone"><a href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/Pocket_Simon_Circuit_Top.jpg" rel="wpdevart_lightbox"><img aria-describedby="caption-attachment-596" class="size-full wp-image-596" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/Pocket_Simon_Circuit_Top.jpg" alt="" width="960" height="1280"></a><p id="caption-attachment-596" class="wp-caption-text">Pocket Simon circuit board top view</p></div>
+<div id="attachment_597" style="width: 970px" class="wp-caption alignnone"><a href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/Pocket_Simon_Circuit_underneath.jpg" rel="wpdevart_lightbox"><img aria-describedby="caption-attachment-597" class="size-full wp-image-597" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/Pocket_Simon_Circuit_underneath.jpg" alt="" width="960" height="1280"></a><p id="caption-attachment-597" class="wp-caption-text">Pocket Simon circuit board bottom view</p></div>
+<p>By taking the top view of the circuit board and processing it in Photoshop it is possible to make a better view to allow the circuit to be converted back into a schematic diagram. To do this all the tracks on the PCB are filled with black and the remaining items filled with white. The labels can be added to make tracing the circuit easier, resulting in the following picture:</p>
+<div id="attachment_598" style="width: 1930px" class="wp-caption alignnone"><a href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/Pocket_Simon_PCB_enhanced.jpg" rel="wpdevart_lightbox"><img aria-describedby="caption-attachment-598" class="size-full wp-image-598" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/Pocket_Simon_PCB_enhanced.jpg" alt="" width="1920" height="2560"></a><p id="caption-attachment-598" class="wp-caption-text">An enhanced and labelled view of the Pocket Simon PCB</p></div>
+<p>By tracing the tracks on the circuit board and using the available datasheet for the SN75494N chip it is possible to draw the schematic for the Pocket Simon circuit which is shown in the following diagram:</p>
+<div id="attachment_595" style="width: 1404px" class="wp-caption alignnone"><a href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/Pocket_simon_circuit_sch.png" rel="wpdevart_lightbox"><img aria-describedby="caption-attachment-595" class="size-full wp-image-595" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/Pocket_simon_circuit_sch.png" alt="" width="1394" height="1110"></a><p id="caption-attachment-595" class="wp-caption-text">Schematic diagram of the Pocket Simon circuit</p></div>
+<p>The only difference between Pocket Simon and the full size Simon is the addition of a diode which sits across the speaker (usually a diode is used to prevent power surging from the speaker; since the Pocket Simon uses a buzzer instead it is not required) and the order of the lights connected to the SN75494N chip.</p>
+<h2><span id="Modification_of_the_Pocket_Simon_hardware">Modification of the Pocket Simon hardware</span></h2>
+<p>In order to analyse the hardware and software of the Pocket Simon game it is preferable to remove the two integrated circuits from the game’s PCB. The original circuit can then be altered with the addition of two IC sockets to allow easy insertion of the components to and from the board as shown in the following picture:</p>
+<div id="attachment_590" style="width: 1290px" class="wp-caption alignnone"><a href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/Board_mod_closeup.jpg" rel="wpdevart_lightbox"><img aria-describedby="caption-attachment-590" class="size-full wp-image-590" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/Board_mod_closeup.jpg" alt="" width="1280" height="960"></a><p id="caption-attachment-590" class="wp-caption-text">Pocket Simon’s circuit board with added IC sockets</p></div>
+<p>By following the circuit diagram (and using the chips from the original circuit board it is possible to mock‐up the Pocket Simon game on a breadboard (which makes it far easier to test and analyse the custom processor chip and take readings of the other aspects of the game). The following picture shows a basic game mock‐up (this method was also used to test the schematic for accuracy); note that the light‐bulbs were replaced by high‐intensity LEDs purely for convenience:</p>
+<div id="attachment_591" style="width: 1290px" class="wp-caption alignnone"><a href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/Bredboarded_pocket_simon.jpg" rel="wpdevart_lightbox"><img aria-describedby="caption-attachment-591" class="size-full wp-image-591" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/Bredboarded_pocket_simon.jpg" alt="" width="1280" height="960"></a><p id="caption-attachment-591" class="wp-caption-text">Pocket Simon mock‐up on a breadboard</p></div>
+<h2><span id="MB4850_Microprocessor">MB4850 Microprocessor</span></h2>
+<p>According to sources on the web the original design for the Simon game was performed on a Texas Instruments TMS1100 microprocessor which was a popular embedded processor at the time. Since processor development, coding and the tools required for coding were very expensive and time consuming to make in 1977‐78 it is safe to assume that the MB4850 is a variant of the TMS1100 which was packaged and programmed specifically for the Simon game (TMS1100 were not programmable by the customer, the customer had to specify the required ROM image (software) and then the chips would be manufactured with the ROM image included).</p>
+<p>This theory is backed up by comparing the oscillator and initialisation circuitry around the processor with datasheets for other ‘pre‐programmed’ TMS1000 variants. The use of a capacitor and resistor in parallel provides the timing to the processor (in the Pocket Simon game this oscillates once every 225 uS giving a oscillation speed of 4.4Khz) as well as the initialisation capacitor which ensures the processor is ‘ready’ before the game begins.</p>
+<p>Note (20101214): I recently purchased another broken full-size Simon game from ebay which had a revision ‘A’ PCB. Instead of the smaller MB4850 chip the revision A board had a 28 pin TMS1000 processor which confirms my original guess. Presumably these were replaced with smaller devices in subsequent revisions to cut production costs.</p>
+<p>The TMS1100 is a four‐bit microprocessor with 8192 bits of ROM and 256 bits of RAM. The MD4850 variant has 4 input pins (named K1, K2, K4 and K8) and 8 output pins (named R0‐R7). The oscillator connection pin (3) is named OSC and the initialisation pin (9) is called INIT. Following the Pocket Simon circuitry and the datasheet information for TMS1121 as guidance this indicates the MD4850 has the following pin out:</p>
+<div id="attachment_594" style="width: 1530px" class="wp-caption alignnone"><a href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/MD4850_pin_out.png" rel="wpdevart_lightbox"><img aria-describedby="caption-attachment-594" class="size-full wp-image-594" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/MD4850_pin_out.png" alt="" width="1520" height="1776"></a><p id="caption-attachment-594" class="wp-caption-text">MD4850 Pin out</p></div>
+<p>The MD4850 ‘R’ outputs should provide about ‐9V at ‐14mA and the total (recommended) power dissipation is 400mW.</p>
+<h1><span id="Software">Software</span></h1>
+<h2><span id="Switch_multiplexing_by_polling">Switch multiplexing by polling</span></h2>
+<p>It can be seen from the schematic that all the switches on the circuit are multiplexed to 4 inputs on the MB4850, this configuration requires the software to ‘poll’ the states of the various switches. By using an oscilloscope it is possible to measure the timing over the polling. The following pins perform the polling:</p>
+<ul>
+<li>Pin 1 – polls start button and skill switch. Polling ‘high’ lasts for 1.5ms followed by a low of 50ms; polling happens continuously whilst the game is on</li>
+<li>Pin 16 – polls Last, longest and game switch; Polling ‘high’ lasts for 1.5ms followed by a low of 50ms; polling happens continuously whilst the game is on</li>
+<li>Pin 15 – polls the colour switches; Polling ‘high’ lasts for 1.5ms followed by a low of 50ms; polling only occurs whilst a game is in progress.</li>
+</ul>
+<p>Note: pin 1 and pin 16 are polled sequentially i.e. the ‘high’ of pin 1 is followed directly by the high of pin 16.</p>
+<h2><span id="Sound_frequencies_and_timing">Sound frequencies and timing</span></h2>
+<p>By adding an audio output jack to the breadboard mock‐up of Pocket Simon it is possible to connect the sound output from the game to a computer and sample the sounds that are created. This allows accurate timing of the tones played by the game and the timing of the silences between various tones by using sample editing software.</p>
+<p>All sounds are square waves when monitored with an oscilloscope.</p>
+<p>Each coloured lens has an individual tone which is generated when the game lights a colour or if a player lights a colour. The tones for the lights are as follows (on Pocket Simon):</p>
+<ul>
+<li>Blue – 415 Hz – G#4 (true pitch 415.305 Hz)</li>
+<li>Yellow – 310 Hz – D#4 (true pitch 311.127 Hz)</li>
+<li>Red – 252 Hz ‐ B3 (true pitch 247.942 Hz)</li>
+<li>Green – 209 Hz – G#3 (true pitch 207.652 Hz)</li>
+</ul>
+<p>On the full‐size version of Simon the lights are in the opposite order:</p>
+<ul>
+<li>Green – 415 Hz – G#4 (true pitch 415.305 Hz)</li>
+<li>Red – 310 Hz – D#4 (true pitch 311.127 Hz)</li>
+<li>Yellow – 252 Hz ‐ B3 (true pitch 247.942 Hz)</li>
+<li>Blue – 209 Hz – G#3 (true pitch 207.652 Hz)</li>
+</ul>
+<p>In addition, if the player presses he wrong colour or takes too long the game plays a losing tone of 42 Hz for 1.5 seconds.</p>
+<p>Note: According to information on the web the sounds of the Simon game are based on the primary four notes of a bugle (picked so the game will always sound harmonious no matter the sequence). These notes are G1, C2, E2 and G2 (although the game plays notes in the 3rd and 4th octave). This being the case the actual frequencies should be:</p>
+<ul>
+<li>Green – G4 391.995 Hz</li>
+<li>Red – E4 329.628 Hz</li>
+<li>Yellow – C4 261.626 Hz</li>
+<li>Blue – G3 195.998 Hz</li>
+</ul>
+<p>The inaccuracy of the game tones is probably due to the constraints of accurately producing the duty‐cycle timing required for the notes (the timing of the square wave is limited by the instruction speed of the processor) and also inaccuracies in the processor’s clock (which is rudimentary by modern standards).</p>
+<p>As the game progresses the playback of the tones becomes faster, timings are shown in the following table (note when using the last and longest buttons the sequence is always played back at the lowest speed):</p>
+<ul>
+<li>Sequence length: 1‐5, tone duration 0.42 seconds, pause between tones 0.05 seconds</li>
+<li>Sequence length: 6‐13, tone duration 0.32 seconds, pause between tones 0.05 seconds</li>
+<li>Sequence length: 14‐31, tone duration 0.22 seconds, pause between tones 0.05 seconds</li>
+</ul>
+<p>If the required sequence length for the skill level has been reached Pocket Simon plays a victory tone of six beeps (of the same frequency as the last colour in the sequence). The first beep is 0.02 seconds followed by 5 beeps of 0.07 seconds with a 0.02 second gap between tones the light of the last colour of the sequence is flashed on with each beep. The victory tone is played 0.8 seconds after the last colour of the sequence has been pressed and released.</p>
+<p>The time between the player finishing a sequence and the game playing the sequence again (with an extra colour) is 0.8 seconds.<br>
+When depressing a colour there is no limit on how long you can keep the colour pressed when replaying a sequence the tone and light continue until the colour is released (a handy cheat if you need a little more time to remember the next colour!).</p>
+<p>In game time out: 3 seconds (after which the losing tone is played)</p>
+<p>Inactive and still powered on warning: 45 seconds. This warning lights the colour that was previously lit in the game (i.e. the colour that the losing tone or the winning tone flashed). The first beep is 0.02 seconds followed by 16 beeps lasting 0.07 seconds with a 0.02 second gap between each beep. The tone’s frequency is the same as the colour it is flashing. If no colour has been selected since the game was turned on the Pocket Simon flashes the red colour (the full‐size Simon flashes the yellow colour). This warning tone repeats if the game remains inactive.</p>
+<h2><span id="Special_8216Razz8217">Special ‘Razz’</span></h2>
+<p>In games 1 and 2 there is a ‘special victory signal’ which is played if you complete a sequence of 31 colours (i.e. you win on skill level 4). The game plays the following tones (and flashes the corresponding lights) for 0.10 seconds per light:</p>
+<p>310, 252, 209, 415 x 3 (RYBG on the full-size Simon)<br>
+310, 252 (RY)</p>
+<p>At which point the tones are replaced by the failure signal for a further 0.8 seconds. The lights continue to flash (BG RYBG RY) for 0.1 seconds per light.</p>
+<p>In game 3 there is a ‘very special victory signal’ that is played if you complete a sequence of 31 colours on skill level 4. It is identical to the ‘special victory signal’ except that the failure signal continues to play (without flashing any lights) until the game is turned off.</p>
+<p>The time between completing the game and the special signal being played is 0.8 seconds.</p>
+<h2><span id="Random_number_generation">Random number generation</span></h2>
+<p>In order to provide a seemingly endless and random number of sequences for the game the software counts from 1 to 4 every time the main processing loop is polled. When a button is pressed (to start the game for example) the current value of the counter is used to select the colour and so on as the game is played (this information is hinted at in US Patent 4,207,087). This provides a simple random sequence generator for the game.</p>
+<h2><span id="Maximum_sequence_length">Maximum sequence length</span></h2>
+<p>The maximum sequence length allowed by the game is 31. Each step of the sequence requires 2 bits of RAM so the sequence can be stored and played back (2 bits gives a range of 0 to 3) i.e. 62 bits is required to store the pattern. The longest playback feature would also require a further 62 bits to store the longest pattern for later playback. Note: the last feature would simply use the sequence from the last game and would be overwritten when a new game begins.</p>
+<p>The reason for limiting the sequence length to 31 is probably because the MB4850 processor is 4-bit so 31 was the highest number that could be stored in a word (1 word plus the carry bit).</p>
+<h1><span id="Differences_between_Pocket_Simon_and_Simon">Differences between Pocket Simon and Simon</span></h1>
+<p>There are four basic differences between Pocket Simon and Simon; the ordering of the colours, the additional on/off switch, slightly different sound circuitry (since the full-size Simon uses a speaker not a buzzer) and the wiring of the SN75494N chip. The following circuit diagram shows the schematics for the full-size Simon game:</p>
+<div id="attachment_599" style="width: 1434px" class="wp-caption alignnone"><a href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/Simon_circuit_schematic_v2.png" rel="wpdevart_lightbox"><img aria-describedby="caption-attachment-599" class="size-full wp-image-599" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/Simon_circuit_schematic_v2.png" alt="" width="1424" height="1031"></a><p id="caption-attachment-599" class="wp-caption-text">Schematic diagram of the Simon circuit</p></div>
+<h1><span id="MB_Simon_PCB_Revision_A">MB Simon PCB Revision A</span></h1>
+<p>(Update: 20141105) Some questions about the full size Simon game have been asked over on the MESS emulation forums, specifically about the Revision A PCB which contains a TMS1000 microcontroller. Since I have one of these boards here is the schematic diagram for the revision A PCB showing the connections to the TMS1000:</p>
+<div id="attachment_593" style="width: 3097px" class="wp-caption alignnone"><a href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/MB_Simon_Rev_A.png" rel="wpdevart_lightbox"><img aria-describedby="caption-attachment-593" class="size-full wp-image-593" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/MB_Simon_Rev_A.png" alt="" width="3087" height="2127"></a><p id="caption-attachment-593" class="wp-caption-text">Schematic diagram of the Rev A PCB Simon circuit</p></div>
+<h1><span id="References">References</span></h1>
+<p><a href="http://www.freepatentsonline.com/4207087.html" target="_blank" rel="noopener">US patent number 4,207,087 (for the original Simon concept game)</a></p>
+<p><a href="http://www.electro-tech-online.com/attachments/datasheet-parts-requests/9147d1155433251-tms1122-digital-clock-tms1121.pdf" target="_blank" rel="noopener">TMS 1121 Universal Time Controller Introduction (Texas Instruments)</a></p>
+<p><a href="http://www.handheldmuseum.com/Manuals/MB-PocketSimon.pdf" target="_blank" rel="noopener">Pocket Simon user manual – reproduced by www.handheldmuseum.com</a></p>
+<p><a href="http://www.metacafe.com/watch/1016930/me_and_my_friend_simon/" target="_blank" rel="noopener">Video of a player completing Simon on skill level 4 (used to calculate the sequence playback timing by analysing the audio)</a></p>
+<p><a href="http://www.datasheetcatalog.org/datasheet/nationalsemiconductor/DS005832.PDF" target="_blank" rel="noopener">National Semiconductor DS75494 Hex Digit Driver datasheet</a></p>
+<p><a href="http://www.dieterkoenig.at/ccc/english/se_story_simon.htm" target="_blank" rel="noopener">“The Simon Story” by Ralph H. Baer</a></p>
+<h1><span id="See_Also">See Also</span></h1>
+<p>Please take a look at my other project <a href="https://www.waitingforfriday.com/?p=576">Simon18F</a>.</p>
+<h1><span id="Notes">Notes</span></h1>
+<p>The intention behind this document is to act as a reference for anyone seeking to repair an existing Simon game or create their own. By replacing the MB4850 with a PIC microcontroller (or similar) and then replacing the SN75494N with jumper‐wires and the bulbs with LEDs it is easily possible to build a fully customisable and programmable version of the game within the original case (the PIC can be mounted on a PCB which rearranges the PICs pin configuration to match the MB4850).</p>
+<p>Another (much easier) modification is to remove the white cardboard reflector in the game (present in both the full and pocket versions) and cover it with aluminium tape, which increases the brightness of the lenses.</p>
+<p>If your Simon has suffered damage from a leaking battery use a solution of 1:1 water and vinegar to clear it up (the battery ‘gunk’ is alkaline so a mild acid will remove it properly). If any tracks on the circuit have become broken for any reason carefully scrape the green varnish off the edges of the remaining track (around the break) and then paint with conductive silver paint. This technique can also be used to repair worn switches on the pocket Simon circuit board.</p>
+<p>If you have any comments, amendments or extra useful information about the game, please feel free to email me.</p>
+<p>All pictures and illustrations were drawn or photographed by myself. I make no guarantee of accuracy and take no responsibility if you break your Simon whilst doing anything mentioned in this document.</p>
+<p>No Pocket Simons were harmed during the making of this document</p>
+<div id="ca-pub-6176376781249684:8981712338" class="ads ads_after"><script type="text/javascript">
+    google_ad_client = "ca-pub-6176376781249684";
+    google_ad_slot = "8981712338";
+    google_ad_width = 728;
+    google_ad_height = 90;
+</script>
+<!-- 728x90, created 3/19/10 -->
+<script type="text/javascript" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/f.txt">
+</script></div>                                </div>                            
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                                                
+                        <div class="clear"></div>                      
+                        <nav id="nav-single"> <span class="nav-previous">
+                                <a href="https://www.waitingforfriday.com/?p=701" rel="prev"><span class="meta-nav">←</span> Previous Post </a>                            </span> <span class="nav-next">
+                                <a href="https://www.waitingforfriday.com/?p=576" rel="next">Next Post <span class="meta-nav">→</span></a>                            </span> </nav>
+                        <!--Start Comment Section-->
+                        <!-- You can start editing here. -->
+<div id="commentsbox">
+            <h3 id="comments">
+            2 Responsesso far.</h3>
+        <ol class="commentlist">
+            		<li class="comment byuser comment-author-david even thread-even depth-1 parent" id="comment-87">
+				<div id="div-comment-87" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/70e2b71ba0babbb5d32ed2d78cc13f1f" srcset="https://secure.gravatar.com/avatar/70e2b71ba0babbb5d32ed2d78cc13f1f?s=90&amp;d=identicon&amp;r=g 2x" class="avatar avatar-45 photo" height="45" width="45">			<cite class="fn">david</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.waitingforfriday.com/?p=586#comment-87">
+			September 11, 2017 at 7:35 pm				</a>
+						</div>
+
+		<p>Thanks for such a great article. I used it to make an arcade joystick with an integrated Simon Game for getting credits:</p>
+<p><a href="https://www.hackster.io/user3853574654/arcade-joystick-x4-plus-simon-game-384309" rel="nofollow ugc">https://www.hackster.io/user3853574654/arcade-joystick-x4-plus-simon-game-384309</a></p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="https://www.waitingforfriday.com/wp-login.php?redirect_to=https%3A%2F%2Fwww.waitingforfriday.com%2F%3Fp%3D586">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-dr-spoon bypostauthor odd alt depth-2" id="comment-88">
+				<div id="div-comment-88" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/7fb085e9f4058199b7b185f3715fadad.jpeg" srcset="https://secure.gravatar.com/avatar/7fb085e9f4058199b7b185f3715fadad?s=90&amp;d=identicon&amp;r=g 2x" class="avatar avatar-45 photo" height="45" width="45">			<cite class="fn"><a href="http://www.waitingforfriday.com/" rel="external nofollow ugc" class="url">Simon Inns</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.waitingforfriday.com/?p=586#comment-88">
+			September 11, 2017 at 8:44 pm				</a>
+						</div>
+
+		<p>Nice project, and nice write-up!  I’m glad you found the article useful <img draggable="false" role="img" class="emoji" alt="🙂" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/1f642.svg"></p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="https://www.waitingforfriday.com/wp-login.php?redirect_to=https%3A%2F%2Fwww.waitingforfriday.com%2F%3Fp%3D586">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+        </ol>
+        <div class="comment-nav">
+            <div class="alignleft">
+                            </div>
+            <div class="alignright">
+                            </div>
+        </div>
+        	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://www.waitingforfriday.com/?p=586#respond" style="display:none;">Cancel reply</a></small></h3><p class="must-log-in">You must be <a href="https://www.waitingforfriday.com/wp-login.php?redirect_to=https%3A%2F%2Fwww.waitingforfriday.com%2F%3Fp%3D586">logged in</a> to post a comment.</p>	</div><!-- #respond -->
+	</div>                        <!--End comment Section-->
+                                    </div>
+            </div>
+        </div>
+        <div class="grid_7 omega">
+            <!--Start Sidebar-->
+            <div class="sidebar">
+    <form role="search" method="get" class="searchform" action="https://www.waitingforfriday.com/">
+    <div>
+        <input type="text" placeholder="Search here" name="s" id="s">
+        <input type="submit" id="ssubmit" value="Search">
+    </div>
+</form>
+<div class="clear"></div>
+<br>
+<h3>Donate to waitingforfriday.com:</h3>			<div class="textwidget"><p>If you like this site and want to help support future projects, or you just want to show appreciation for a project you built, used or enjoyed, please consider leaving a PayPal donation. It’s quick, secure and helps us to run the site and fund future projects!</p>
+</div>
+		<div><form target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_donations"><input type="hidden" name="business" value="simon.inns@gmail.com"><input type="hidden" name="item_name" value="Donate to waitingforfriday.com"><input type="hidden" name="item_number" value="Waitingforfriday.com"><input type="hidden" name="currency_code" value="EUR"><input type="hidden" name="amount" id="amount_4a38c941e02e022c754b7284a56cca8c" value=""><input type="hidden" name="no_note" value="0"><input type="hidden" name="no_shipping" value="1"><input type="hidden" name="notify_url" value="https://www.waitingforfriday.com/wp-admin/admin-post.php?action=add_wpedon_button_ipn"><input type="hidden" name="lc" value="EN_US"><input type="hidden" name="bn" value="WPPlugin_SP"><input type="hidden" name="return" value=""><input type="hidden" name="cancel_return" value=""><input class="wpedon_paypalbuttonimage" type="image" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/btn_donate_pp_142x27.png" border="0" name="submit" alt="Make your payments with PayPal. It is free, secure, effective." style="border: none;"><img alt="" border="0" style="border:none;display:none;" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/pixel.gif" width="1" height="1"></form></div><hr>				<h3>Recent Posts</h3>		<ul>
+											<li>
+					<a href="https://www.waitingforfriday.com/?p=936">Acorn BBC Master and Electron Cartridge Breakout</a>
+									</li>
+											<li>
+					<a href="https://www.waitingforfriday.com/?p=827">SmallyMouse2 – Universal USB to Quadrature Mouse Adapter</a>
+									</li>
+											<li>
+					<a href="https://www.waitingforfriday.com/?p=794">60W Acorn BBC Master power supply upgrade</a>
+									</li>
+											<li>
+					<a href="https://www.waitingforfriday.com/?p=733">A new look for the website!</a>
+									</li>
+											<li>
+					<a href="https://www.waitingforfriday.com/?p=4">USB to Quadrature Mouse Adapter</a>
+									</li>
+					</ul>
+		<aside class="widget widget-container adsns_widget"><h1 class="widget-title"></h1><div id="ca-pub-6176376781249684:0312657366" class="ads ads_widget"><script type="text/javascript">
+    google_ad_client = "ca-pub-6176376781249684";
+    google_ad_slot = "0312657366";
+    google_ad_width = 160;
+    google_ad_height = 600;
+</script>
+<!-- 160x600, created 3/24/10 -->
+<script type="text/javascript" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/f.txt">
+</script></div></aside>    
+</div>             <!--End Sidebar-->
+        </div>
+    </div>
+</div>
+</div>
+<div class="clear"></div> 
+<!--Start Footer-->
+<div class="footer">
+    <div class="grid_6 alpha">
+    <div class="widget_inner">
+        			<div class="textwidget"><small>Content is available under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">Attribution-Noncommercial-No Derivative Works 4.0 Unported</a> unless otherwise noted.</small></div>
+		    </div>
+</div>
+<div class="grid_6">
+    <div class="widget_inner">
+            </div>
+</div>
+<div class="grid_6">
+    <div class="widget_inner">
+            </div>
+</div>
+<div class="grid_6 omega">
+    <div class="widget_inner">
+            </div>
+</div>
+
+<!--End Footer-->
+
+<div class="clear"></div>    <!--Start Footer bottom-->
+</div>
+<!--Start footer bottom inner-->
+<div class="bottom-footer">
+    <div class="grid_12 alpha">
+        <div class="footer_bottom_inner"> 
+            <span class="copyright"><a href="http://wordpress.org/" rel="generator">Powered by WordPress</a>
+                <span class="sep">&nbsp;|&nbsp;</span>
+                Rethink by <a rel="nofollow" href="http://inkthemes.com/">InkThemes</a>.</span>
+        </div>
+    </div>
+    <div class="grid_12 omega">        
+        <ul class="social_logos">
+                 
+        </ul>
+    </div>
+</div>
+
+<!--End Footer bottom inner-->
+<!--End Footer bottom-->
+</div>
+</div>
+</div>
+<link rel="stylesheet" id="wpdevart_lightbox_front_end_css-css" href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/wpdevart_lightbox_front.css" type="text/css" media="all">
+<link rel="stylesheet" id="wpdevart_lightbox_effects-css" href="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/effects_lightbox.css" type="text/css" media="all">
+<script type="text/javascript">
+/* <![CDATA[ */
+var tocplus = {"visibility_show":"show","visibility_hide":"hide","width":"Auto"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/front.min.js"></script>
+<script type="text/javascript" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/wp-syntax.js"></script>
+<script type="text/javascript" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/mobile-menu.js"></script>
+<script type="text/javascript" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/comment-reply.min.js"></script>
+<script type="text/javascript" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/wp-embed.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wpdevart_lb_variables = {"eneble_lightbox_content":"enable","overlay_transparency_prancent":"28","popup_background_color":"#000000","popup_loading_image":"https:\/\/www.waitingforfriday.com\/wp-content\/plugins\/lightbox-popup\/images\/popup_loading.png","popup_initial_width":"300","popup_initial_height":"300","popup_youtube_width":"640","popup_youtube_height":"408","popup_vimeo_width":"500","popup_vimeo_height":"410","popup_max_width":"5000","popup_max_height":"5000","popup_position":"5","popup_fixed_position":"true","popup_outside_margin":"0","popup_border_width":"2","popup_border_color":"#a3a3a3","popup_border_radius":"10","control_buttons_show":"true","control_buttons_show_in_content":"true","control_buttons_height":"40","control_buttons_line_bg_color":"#000000","control_button_prev_img_src":"https:\/\/www.waitingforfriday.com\/wp-content\/plugins\/lightbox-popup\/images\/contorl_buttons\/prev.png","control_button_prev_hover_img_src":"https:\/\/www.waitingforfriday.com\/wp-content\/plugins\/lightbox-popup\/images\/contorl_buttons\/prev_hover.png","control_button_next_img_src":"https:\/\/www.waitingforfriday.com\/wp-content\/plugins\/lightbox-popup\/images\/contorl_buttons\/next.png","control_button_next_hover_img_src":"https:\/\/www.waitingforfriday.com\/wp-content\/plugins\/lightbox-popup\/images\/contorl_buttons\/next_hover.png","control_button_download_img_src":"https:\/\/www.waitingforfriday.com\/wp-content\/plugins\/lightbox-popup\/images\/contorl_buttons\/download.png","control_button_download_hover_img_src":"https:\/\/www.waitingforfriday.com\/wp-content\/plugins\/lightbox-popup\/images\/contorl_buttons\/download_hover.png","control_button_innewwindow_img_src":"https:\/\/www.waitingforfriday.com\/wp-content\/plugins\/lightbox-popup\/images\/contorl_buttons\/innewwindow.png","control_button_innewwindow_hover_img_src":"https:\/\/www.waitingforfriday.com\/wp-content\/plugins\/lightbox-popup\/images\/contorl_buttons\/innewwindow_hover.png","control_button_fullwidth_img_src":"https:\/\/www.waitingforfriday.com\/wp-content\/plugins\/lightbox-popup\/images\/contorl_buttons\/fullwidth.png","control_button_fullwidht_hover_img_src":"https:\/\/www.waitingforfriday.com\/wp-content\/plugins\/lightbox-popup\/images\/contorl_buttons\/fullwidth_hover.png","control_button_fullwidthrest_img_src":"https:\/\/www.waitingforfriday.com\/wp-content\/plugins\/lightbox-popup\/images\/contorl_buttons\/fullwidthreset.png","control_button_fullwidhtrest_hover_img_src":"https:\/\/www.waitingforfriday.com\/wp-content\/plugins\/lightbox-popup\/images\/contorl_buttons\/fullwidthreset_hover.png","control_button_close_img_src":"https:\/\/www.waitingforfriday.com\/wp-content\/plugins\/lightbox-popup\/images\/contorl_buttons\/close.png","control_button_close_hover_img_src":"https:\/\/www.waitingforfriday.com\/wp-content\/plugins\/lightbox-popup\/images\/contorl_buttons\/close_hover.png","information_panel_show":"true","information_panel_show_in_content":"true","information_panel_bg_color":"#000000","information_panel_default_transparency":"100","information_panel_hover_trancparency":"100","information_panel_count_image_after_text":"Image","information_panel_count_image_middle_text":"of","information_panel_count_padding_left":"15","information_panel_count_padding_right":"4","information_panel_count_font_size":"20","information_panel_desc_padding_left":"15","information_panel_desc_padding_right":"4","information_panel_desc_font_size":"20","information_panel_desc_show_if_not":"true","information_panel_text_for_no_caption":"No Caption","information_panel_title_padding_left":"5","information_panel_title_padding_right":"5","information_panel_title_font_size":"15","information_panel_title_show_if_not":"true","information_panel_text_for_no_title":"No Title","information_panel_ordering":"{\"count\":[1,\"count\"],\"title\":[0,\"title\"],\"caption\":[0,\"caption\"]}"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Reverse Engineering an MB Electronic Simon Game – Waiting for Friday_files/wpdevart_lightbox_front.js"></script>
+
+
+</body></html>
