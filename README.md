@@ -2,7 +2,7 @@
 
 ZX Simon is a conversion of the classic MB Simon game to ZX Spectrum 48k.
 
-This fan conversion is done non profit just for fun.
+This fan conversion is done non-profit just for fun.
 
 ![Alt text](art/simon_case.svg.png)
 
@@ -18,13 +18,13 @@ carlesoriol@gmail.com
 
 Simple: **I hate simon.**
 
-When I was a kid I never had simon. I played with at my friends homes and I always remember how frustrating was to lose one time after another. It was upsetting!!
+When I was a kid, I never had simon. I played with at my friends homes and I always remember how frustrating was to lose one time after another. It was upsetting!!
 
-After finishing Parachute I saw an old simon ad. And I thought... why not? this could be another great z80 assembler / spectrum / attribute game. So I start gathering information.
+After finishing Parachute, I saw an old simon ad. And I thought... why not? This could be another great z80 assembler / spectrum / attribute game. So I start gathering information.
 
-I was amazed by the grat work done by Simon Inns at https://www.waitingforfriday.com/?p=586  wow!!! And then I start loving the game.  Two weekends later ZXSimon was born.
+I was amazed by the great work done by Simon Inns at https://www.waitingforfriday.com/?p=586  wow!!! And then I start loving the game.  Two weekends later ZXSimon was born.
 
-Now I want to share it with you (as always open source and free) so you can lose alone, lose with your friends, lose with your family, out doors, indoors... everywhere you can use an speccy or and emulator you can enjoy this feeling.
+Now I want to share it with you (as always open source and free) so you can lose alone, lose with your friends, lose with your family, out doors, indoors... everywhere you can use a speccy or and emulator you can enjoy this feeling.
 
 ## Play
 
@@ -41,7 +41,7 @@ Open tap or tzx file in any ZX Spectrum, FPGA machine or emulator you like.
 * Key: **3** - Special Key. Changes Simon tones. (There are several versions of the game so select the one you like)
 
 * Key: **F** - Repeats last sequence
-* Key: **M** - Repeats longest sequence
+* Key: **M** - Repeats the longest sequence
 
 * Key: **SPACE** - Show help
 * Key: **INTRO** - Starts a game
@@ -63,7 +63,7 @@ RANDOMIZE USR 32768
 
 - Option B 
 
-Assembly with pasmo to create Tap files. (Thanks George Phillips for show me in facebook how to align with this assembler)
+Assembly with pasmo to create Tap files. (Thanks George Phillips for show me on facebook how to align with this assembler)
 
 ```
 sh make.sh
