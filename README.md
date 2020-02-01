@@ -28,7 +28,7 @@ Now I want to share it with you (as always open source and free) so you can lose
 
 ## Play
 
-Open z80 or tap file in any ZX Spectrum, FPGA machine or emulator you like.
+Open tap or tzx file in any ZX Spectrum, FPGA machine or emulator you like.
 
 * Key: **Q** - Green button
 * Key: **P** - Red button
@@ -72,7 +72,7 @@ sh make.sh
 ## Tape files
 
 zxsimon.tap - To use in all speccy emulators
-zxsimon.tzx - Accelerated tape to use in some emulators like RVM. (Created with OTLA from Francisco Villa Rodriguez. Thanks to Antonio Villena for cargandoleches)
+zxsimon.tzx - Accelerated tape to use in some emulators like RVM. (Created with OTLA from Francisco Villa Rodriguez. Thanks to Antonio Villena for cargandoleches and the amazing zxuno & zxdos)
 
 ## Thanks
 
