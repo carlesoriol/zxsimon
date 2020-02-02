@@ -18,13 +18,13 @@ carlesoriol@gmail.com
 
 Simple: **I hate simon.**
 
-When I was a kid, I never had simon. I played with at my friends homes and I always remember how frustrating was to lose one time after another. It was upsetting!!
+When I was a kid, I never had simon. I played with at my friends homes and I always remember how frustrating it was to lose one time after another. It was upsetting!!
 
 After finishing Parachute, I saw an old simon ad. And I thought... why not? This could be another great z80 assembler / spectrum / attribute game. So I start gathering information.
 
 I was amazed by the great work done by Simon Inns at https://www.waitingforfriday.com/?p=586  wow!!! And then I start loving the game.  Two weekends later ZXSimon was born.
 
-Now I want to share it with you (as always open source and free) so you can lose alone, lose with your friends, lose with your family, out doors, indoors... everywhere you can use a speccy or and emulator you can enjoy this feeling.
+Now I want to share it with you (as always open source and free) so you can lose alone, lose with your friends, lose with your family, out doors, indoors... everywhere you can use a speccy or an emulator you can enjoy this feeling.
 
 ## Play
 
